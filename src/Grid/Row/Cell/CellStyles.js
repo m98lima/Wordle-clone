@@ -5,10 +5,10 @@ export const CellStyles = styled.li`
     background-color: #f5f5f5;
     height: 60px;
     width: 60px;
-    list-style-type: none;
     display: inline;
     border-radius: 4px;
     padding: 5px;
+    margin-inline: 2px;
     font-size: 35px;
     font-weight: bold;
 `;
