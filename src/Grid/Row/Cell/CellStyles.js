@@ -13,4 +13,5 @@ export const CellStyles = styled.li`
     font-size: 35px;
     font-weight: bold;
     text-align: center;
+    vertical-align: middle;
 `;
