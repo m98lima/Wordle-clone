@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Grid from "./components/Grid/Grid";
 import Header from "./components/Header/Header";
+import Keyboard from "./components/Keyboard/Keyboard";
 
 function App() {
   const [prevRows, setPrevRows] = useState([]);
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
       <Header />
       <Grid prevRows={prevRows} currRow={currRow} rowAmount={emptyRows} />
+      <Keyboard />
     </div>
   );
 }
