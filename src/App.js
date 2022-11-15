@@ -11,6 +11,11 @@ function App() {
 
   let tempCurrRow;
 
+  const checkWord = () => {
+    console.log("Comparing word with expected answer");
+    return false;
+  };
+
   const handleKeyPress = (key) => {
     return () => {
       if (currIndex < 5) {
@@ -18,15 +23,48 @@ function App() {
         tempCurrRow[currIndex] = key;
         setCurrIndex(currIndex + 1);
         setCurrRow(tempCurrRow);
-      };
+      }
     };
+  };
+
+  const handleBack = () => {
+    if (currIndex > 0) {
+      tempCurrRow = currRow;
+      tempCurrRow[currIndex - 1] = "";
+      setCurrIndex(currIndex - 1);
+      setCurrRow(tempCurrRow);
+    }
+  };
+
+  const handleEnter = () => {
+    if (currIndex == 5) {
+      if (!checkWord()) {
+        if (emptyRows > 0) {
+          setPrevRows([...prevRows, currRow]);
+          setCurrRow(["", "", "", "", ""]);
+          setEmptyRows(emptyRows - 1);
+          setCurrIndex(0);
+          console.log(prevRows);
+          console.log(currRow);
+          console.log(emptyRows);
+        } else {
+          console.log("No more attempts left");
+        }
+      } else {
+        console.log("That's the correct word!");
+      }
+    }
   };
 
   return (
     <div className="App">
       <Header />
       <Grid prevRows={prevRows} currRow={currRow} rowAmount={emptyRows} />
-      <Keyboard handleKeyPress={handleKeyPress} />
+      <Keyboard
+        handleKeyPress={handleKeyPress}
+        handleBack={handleBack}
+        handleEnter={handleEnter}
+      />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { keys } from "../../util/Keyboard";
 import { KeyboardContainer, KeyContainer, KeyRowContainer, SpecialKeyContainer } from "./KeyboardStyles";
 
 
-const Keyboard = ({ handleKeyPress }) => {
+const Keyboard = ({ handleKeyPress, handleBack, handleEnter }) => {
   return (
     <KeyboardContainer>
       <KeyRowContainer>
@@ -18,11 +18,11 @@ const Keyboard = ({ handleKeyPress }) => {
       </KeyRowContainer>
 
       <KeyRowContainer>
-        <SpecialKeyContainer>{"Back"}</SpecialKeyContainer>
+        <SpecialKeyContainer onClick={handleBack} >{"Back"}</SpecialKeyContainer>
         {keys[2].map((key) => (
           <KeyContainer onClick={handleKeyPress(key)} >{key}</KeyContainer>
         ))}
-        <SpecialKeyContainer>{"Enter"}</SpecialKeyContainer>
+        <SpecialKeyContainer onClick={handleEnter} >{"Enter"}</SpecialKeyContainer>
       </KeyRowContainer>
     </KeyboardContainer>
   );
