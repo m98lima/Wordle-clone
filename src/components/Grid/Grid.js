@@ -26,8 +26,8 @@ const Grid = ({ prevRows, currRow, rowAmount }) => {
 
       {/* rendering the current row */}
       <RowContainer>
-        {currRow.map((index) => (
-          <CellContainer>{currRow[index]}</CellContainer>
+        {currRow.map((elem) => (
+          <CellContainer>{elem}</CellContainer>
         ))}
       </RowContainer>
 
