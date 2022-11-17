@@ -19,7 +19,7 @@ const Grid = ({ prevRows, currRow, rowAmount }) => {
       {prevRows.map((row) => (
         <RowContainer>
           {row.map((elem) => (
-            <CellContainer>{elem}</CellContainer>
+            <CellContainer color={elem.color} >{elem.value}</CellContainer>
           ))}
         </RowContainer>
       ))}

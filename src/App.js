@@ -2,6 +2,7 @@ import { useState } from "react";
 import Grid from "./components/Grid/Grid";
 import Header from "./components/Header/Header";
 import Keyboard from "./components/Keyboard/Keyboard";
+import { checkWord } from "./util/WordChecker";
 
 function App() {
   const [prevRows, setPrevRows] = useState([]);
@@ -10,11 +11,6 @@ function App() {
   const [currIndex, setCurrIndex] = useState(0);
 
   let tempCurrRow;
-
-  const checkWord = () => {
-    console.log("Comparing word with expected answer");
-    return false;
-  };
 
   const handleKeyPress = (key) => {
     return () => {
@@ -38,19 +34,21 @@ function App() {
 
   const handleEnter = () => {
     if (currIndex == 5) {
-      if (!checkWord()) {
+      const result = checkWord(currRow);
+      const temp = result.checkedRow;
+      const isCorrect = result.isCorrect;
+      if (!isCorrect) {
         if (emptyRows > 0) {
-          setPrevRows([...prevRows, currRow]);
+          setPrevRows([...prevRows, temp]);
           setCurrRow(["", "", "", "", ""]);
           setEmptyRows(emptyRows - 1);
           setCurrIndex(0);
-          console.log(prevRows);
-          console.log(currRow);
-          console.log(emptyRows);
         } else {
           console.log("No more attempts left");
         }
       } else {
+        setPrevRows([...prevRows, temp]);
+        setCurrRow([]);
         console.log("That's the correct word!");
       }
     }

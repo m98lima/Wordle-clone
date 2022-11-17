@@ -12,7 +12,15 @@ export const RowContainer = styled.div`
 `;
 
 export const CellContainer = styled.div`
-  border: 4px solid #b5b5b5;
+  border: 4px solid;
+  border-color: ${(props) =>
+    props.color == "green"
+      ? "#2BCC3F"
+      : props.color == "yellow"
+      ? "#F2EF1F"
+      : props.color == "red"
+      ? "#F52912"
+      : "#b5b5b5"};
   background-color: #f5f5f5;
   height: 30px;
   width: 30px;
