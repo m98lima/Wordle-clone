@@ -1,4 +1,4 @@
-import { CellContainer, GridContainer, RowContainer } from "./GridStyles";
+import { CellContainer, CurrentCellContainer, GridContainer, RowContainer } from "./GridStyles";
 
 const generateNextRows = (rowAmount) => {
   let nextRows = [];
@@ -27,7 +27,7 @@ const Grid = ({ prevRows, currRow, rowAmount }) => {
       {/* rendering the current row */}
       <RowContainer>
         {currRow.map((elem) => (
-          <CellContainer>{elem}</CellContainer>
+          <CurrentCellContainer>{elem}</CurrentCellContainer>
         ))}
       </RowContainer>
 
