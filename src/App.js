@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FinishWindow from "./components/FinishWindow/FinishWindow";
 import Grid from "./components/Grid/Grid";
 import Header from "./components/Header/Header";
 import Keyboard from "./components/Keyboard/Keyboard";
@@ -9,6 +10,8 @@ function App() {
   const [currRow, setCurrRow] = useState(["", "", "", "", ""]);
   const [emptyRows, setEmptyRows] = useState(5);
   const [currIndex, setCurrIndex] = useState(0);
+  const [isGameFinished, setIsGameFinished] = useState(false);
+  const [isWordCorrect, setIsWordCorrect] = useState(false);
 
   let tempCurrRow;
 
@@ -44,11 +47,17 @@ function App() {
           setEmptyRows(emptyRows - 1);
           setCurrIndex(0);
         } else {
+          setPrevRows([...prevRows, temp]);
+          setCurrRow([]);
+          setIsWordCorrect(false);
+          setIsGameFinished(true);
           console.log("No more attempts left");
         }
       } else {
         setPrevRows([...prevRows, temp]);
         setCurrRow([]);
+        setIsWordCorrect(true);
+        setIsGameFinished(true);
         console.log("That's the correct word!");
       }
     }
@@ -56,6 +65,7 @@ function App() {
 
   return (
     <div className="App">
+      {isGameFinished && <FinishWindow isWordCorrect={isWordCorrect} />}
       <Header />
       <Grid prevRows={prevRows} currRow={currRow} rowAmount={emptyRows} />
       <Keyboard
