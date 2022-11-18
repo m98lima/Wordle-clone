@@ -25,7 +25,7 @@ const Grid = ({ prevRows, currRow, rowAmount }) => {
       ))}
 
       {/* rendering the current row */}
-      <RowContainer>
+      <RowContainer key={Math.random()} >
         {currRow.map((elem) => (
           <CurrentCellContainer>{elem}</CurrentCellContainer>
         ))}

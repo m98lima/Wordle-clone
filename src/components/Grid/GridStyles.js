@@ -38,4 +38,16 @@ export const CellContainer = styled.div`
 export const CurrentCellContainer = styled(CellContainer)`
   height: 33px;
   width: 33px;
+
+  @keyframes anim {
+    0% {
+      height: 30px;
+      width: 30px;
+    }
+    100% {
+      height: 33px;
+      width: 33px;
+    }
+  }
+  animation: anim 0.2s ease-out;
 `;
